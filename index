@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { background: transparent; color: #C0FF8C; font-family: sans-serif; display: flex; flex-direction: column; gap: 20px; }
+  .row { display: flex; align-items: center; gap: 10px; }
+  input { background: black; border: 1px solid white; color: white; padding: 10px; width: 200px; }
+  button { background: transparent; border: 1px solid #C0FF8C; color: #C0FF8C; padding: 10px; cursor: pointer; }
+  button:hover { background: #C0FF8C; color: black; }
+</style>
+</head>
+<body>
+
+  <div class="row">
+    <input type="text" id="user" placeholder="Username">
+    <button onclick="genUser()">Generate Random</button>
+  </div>
+
+  <div class="row">
+    <input type="text" id="pass" placeholder="Password">
+    <button onclick="genPass()">Generate Random</button>
+  </div>
+
+<script>
+  function genUser() {
+    const names = ["Entity", "Ghost", "Node", "Void", "Anon"];
+    const rand = names[Math.floor(Math.random() * names.length)] + Math.floor(Math.random() * 9999);
+    document.getElementById('user').value = rand;
+  }
+  function genPass() {
+    const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+    let retVal = "";
+    for (let i = 0; i < 12; ++i) {
+      retVal += charset.charAt(Math.floor(Math.random() * charset.length));
+    }
+    document.getElementById('pass').value = retVal;
+  }
+</script>
+</body>
+</html>
